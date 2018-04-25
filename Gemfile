@@ -21,6 +21,7 @@ gem 'webpacker'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'news-api'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
