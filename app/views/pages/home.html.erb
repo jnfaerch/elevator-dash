@@ -25,21 +25,31 @@
       </div>
     </div> <!-- col articles and news end -->
     <div class="col-12 col-md-4" style="padding-left: 0"> <!-- Widgets -->
-      <div class="col-12" style="height: 33vh;"> <!-- Clock -->
-        <div class="card" style="height: 95%;">
-          <p>Clock</p>
+      <div class="col-12" style="height: 33vh;"> <!-- FlipClock -->
+        <div class="card justify-content-center" style="height: 95%;">
+          <div class="clock align-self-center"></div>
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Weather -->
-        <div class="card" style="height: 95%;">
-          <p>Weather</p>
+        <div class="card justify-content-center" style="height: 95%;">
+          <p class="align-self-center">Weather</p>
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Logo -->
-        <div class="card" style="height: 96%;">
+        <div class="card justify-content-center" style="height: 96%;">
           <%= image_tag("hsb.gif", class: "img-fluid") %>
         </div>
       </div>
     </div> <!-- col widgets end -->
   </div> <!-- row end -->
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var clock;
+  $(document).ready(function() {
+    clock = $('.clock').FlipClock({
+      clockFace: 'TwentyFourHourClock',
+          // showSeconds: false // Uncomment to remove seconds
+    });
+  });
+</script>
