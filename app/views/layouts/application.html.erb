@@ -10,7 +10,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <!-- Successfull atempt to remove the navbar from hte homepage only -->
+    <!-- Successfull atempt to remove the navbar from the homepage only -->
     <%= content_for?(:navbar) ? yield(:navbar) : render('shared/navbar') %>
 
     <%= render 'shared/flashes' %>
