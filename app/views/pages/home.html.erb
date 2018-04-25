@@ -32,7 +32,7 @@
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Weather -->
         <div class="card justify-content-center" style="height: 95%;">
-          <p class="align-self-center">Weather</p>
+          <div id="openweathermap-widget-15" class="align-self-center"></div>
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Logo -->
@@ -43,7 +43,7 @@
     </div> <!-- col widgets end -->
   </div> <!-- row end -->
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- For FlipClock -->
 <script type="text/javascript">
   var clock;
   $(document).ready(function() {
@@ -52,4 +52,8 @@
           // showSeconds: false // Uncomment to remove seconds
     });
   });
+</script>
+<!-- For OpenWeatherMap widget -->
+<script>
+  window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 15,cityid: '2692969',appid: '488554fc145adf25587a3f5df786c729',units: 'metric',containerid: 'openweathermap-widget-15',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
 </script>
