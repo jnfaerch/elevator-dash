@@ -1,3 +1,24 @@
 .adds-top-padding {
   padding-top: 20px;
 }
+
+.card-image-control {
+  position:relative;
+  overflow:hidden;
+}
+
+.card-image-height {
+  position:absolute;
+  top:0;
+  bottom:0;
+  margin: auto;
+  width:100%;
+}
+
+.background-image-cover {
+  background:rgba(0,0,0,0.5);
+}
+
+.paragraph-size {
+  // font-size: x-large; // Bootstrap .lead class takes over
+}
