@@ -7,17 +7,18 @@
   <div class="row adds-top-padding">
     <div class="col-12 col-md-8"> <!-- Articles and news -->
       <div class="col-12" style="height: 54vh;"> <!-- Article -->
-        <div class="card bg-dark text-white text-center" style="height: 95%;">
-          <img class="card-img" src="">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="card bg-dark text-white text-center card-image-control" style="height: 95%";">
+          <%= image_tag("turningtorso.jpg", class: "card-img img-fluid card-image-height") %>
+          <div class="card-img-overlay background-image-cover">
+            <h2 class="card-title">Card title</h2>
+            <p class="card-text paragraph-size">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
         </div>
       </div>
       <div class="col-12" style="height: 44vh;"> <!-- News -->
-        <div class="card bg-dark text-white" style="height: 95%;">
-          <div class="card-img-overlay">
+        <div class="card bg-dark text-white card-image-control" style="height: 95%;">
+          <%= image_tag("turningtorso.jpg", class: "card-img img-fluid card-image-height") %>
+          <div class="card-img-overlay background-image-cover">
             <h5 class="card-title">News</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
