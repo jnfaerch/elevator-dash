@@ -9,8 +9,8 @@ class PagesController < ApplicationController
     @headlines = @newsapi.get_top_headlines(country: 'se')
     @busjson = JSON.load(busjson).to_hash
     @busno = @busjson.first[1].first["Product"]["num"] # The bus No
-    @adjusttime = @busjson.first[1][0]["Stops"]["Stop"][0]["depTime"][0..4] # The next bus planned departure time - ie 19:46
-    @adjusttime2 = @busjson.first[1][1]["Stops"]["Stop"][0]["depTime"][0..4] # The next bus after that
+    @bustime = @busjson.first[1][0]["Stops"]["Stop"][0]["depTime"][0..4] # The next bus planned departure time - ie 19:46
+    @bustime2 = @busjson.first[1][1]["Stops"]["Stop"][0]["depTime"][0..4] # The next bus after that
     # @departure = ((((@adjusttime.to_time - Time.now) / 1.hour).modulo(24)) * 60).to_i
   end
 
