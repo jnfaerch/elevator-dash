@@ -7,7 +7,7 @@
   <div class="row adds-top-padding">
     <div class="col-12 col-md-8"> <!-- Articles and news -->
       <div class="col-12" style="height: 54vh;"> <!-- Article -->
-        <div class="card bg-dark text-white text-center card-image-control" style="height: 95%";">
+        <div class="card bg-dark text-white text-center card-image-control">
           <%= image_tag("turningtorso.jpg", class: "card-img img-fluid card-image-height") %>
           <div class="card-img-overlay background-image-cover">
             <h2 class="card-title">Card title</h2>
@@ -15,12 +15,19 @@
           </div>
         </div>
       </div>
-      <div class="col-12" style="height: 44vh;"> <!-- News -->
-        <div class="card bg-dark text-white card-image-control" style="height: 95%;">
+      <div class="col-12" style="height: 43vh;"> <!-- News -->
+        <div class="card bg-dark text-white card-image-control">
           <%= image_tag("turningtorso.jpg", class: "card-img img-fluid card-image-height") %>
           <div class="card-img-overlay background-image-cover">
-            <h5 class="card-title">News</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <!-- <h3 class="card-title text-center">News from <%#= @headlines[0].name %></h3> -->
+            <h5 class="card-text"><%= @headlines[0].title %> - @<%= @headlines[0].name.downcase %></h5>
+            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[0].description %></p>
+            <h5 class="card-text"><%= @headlines[1].title %> - @<%= @headlines[1].name.downcase %></h5>
+            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[1].description %></p>
+            <h5 class="card-text"><%= @headlines[2].title %> - @<%= @headlines[2].name.downcase %></h5>
+            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[2].description %></p>
+            <h5 class="card-text"><%= @headlines[3].title %> - @<%= @headlines[3].name.downcase %></h5>
+            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[3].description %></p>
           </div>
         </div>
       </div>
@@ -33,7 +40,7 @@
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Weather -->
         <div class="card justify-content-center" style="height: 95%;">
-          <div id="openweathermap-widget-15" class="align-self-center"></div>
+          <div id="openweathermap-widget" class="align-self-center"></div>
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Logo -->
@@ -57,11 +64,21 @@
 <!-- For OpenWeatherMap widget -->
 <script>
   window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
-    window.myWidgetParam.push({id: 15,cityid: '2692969',appid: <%== ENV["open_weather_map_api_key"].to_json %>,units: 'metric',containerid: 'openweathermap-widget-15',  });
+    window.myWidgetParam.push({id: 15,cityid: '2692969',appid: <%== ENV["open_weather_map_api_key"].to_json %>,units: 'metric',containerid: 'openweathermap-widget' });
+
       (function() {var script = document.createElement('script');
         script.async = true;
         script.charset = "utf-8";
-        script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+        script.src = "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
         var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(script, s);  })();
+        s.parentNode.insertBefore(script, s);
+      })();
+</script>
+<!-- Reload entire page every hour -->
+<script type="text/javascript">
+  setInterval(function(){
+    if (navigator.onLine) {
+     location.reload(true);
+    }
+  }, 60*60*1000);
 </script>
