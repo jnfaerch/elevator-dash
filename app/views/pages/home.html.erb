@@ -21,21 +21,25 @@
           <div class="card-img-overlay background-image-cover">
             <!-- <h3 class="card-title text-center">News from <%#= @headlines[0].name %></h3> -->
             <h5 class="card-text"><%= @headlines[0].title %> - @<%= @headlines[0].name.downcase %></h5>
-            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[0].description %></p>
+            <p class="card-text border-bottom-line"><%= @headlines[0].description %></p>
             <h5 class="card-text"><%= @headlines[1].title %> - @<%= @headlines[1].name.downcase %></h5>
-            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[1].description %></p>
+            <p class="card-text border-bottom-line"><%= @headlines[1].description %></p>
             <h5 class="card-text"><%= @headlines[2].title %> - @<%= @headlines[2].name.downcase %></h5>
-            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[2].description %></p>
+            <p class="card-text border-bottom-line"><%= @headlines[2].description %></p>
             <h5 class="card-text"><%= @headlines[3].title %> - @<%= @headlines[3].name.downcase %></h5>
-            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[3].description %></p>
+            <p class="card-text border-bottom-line"><%= @headlines[3].description %></p>
+            <h5 class="card-text"><%= @headlines[4].title %> - @<%= @headlines[4].name.downcase %></h5>
+            <p class="card-text border-bottom-line"><%= @headlines[4].description %></p>
           </div>
         </div>
       </div>
     </div> <!-- col articles and news end -->
-    <div class="col-12 col-md-4" style="padding-left: 0"> <!-- Widgets -->
+    <div class="col-12 col-md-4" style="padding-left: 0;"> <!-- Widgets -->
       <div class="col-12" style="height: 33vh;"> <!-- FlipClock -->
         <div class="card justify-content-center" style="height: 95%;">
           <div class="clock align-self-center"></div>
+            <!-- <h3 class="align-self-center text-center" style="padding-top: 10px;">Nästa buss mot Centralen</h3> -->
+            <h2 class="align-self-center text-center display-4" style="padding-top: 10px;"><span class="badge badge-warning">Buss <%= @busno %></span> <span class="badge badge-warning"><%= @adjusttime %></span> <span class="badge badge-warning"><%= @adjusttime2 %></span></h2>
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Weather -->
@@ -61,6 +65,10 @@
     });
   });
 </script>
+<!-- For resrobot -->
+<script>
+
+</script>
 <!-- For OpenWeatherMap widget -->
 <script>
   window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
@@ -80,5 +88,5 @@
     if (navigator.onLine) {
      location.reload(true);
     }
-  }, 60*60*1000);
+  }, 4.5*60*1000);
 </script>
