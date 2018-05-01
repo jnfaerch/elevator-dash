@@ -15,17 +15,19 @@
           </div>
         </div>
       </div>
-      <div class="col-12" style="height: 44vh;"> <!-- News -->
+      <div class="col-12" style="height: 43vh;"> <!-- News -->
         <div class="card bg-dark text-white card-image-control">
           <%= image_tag("turningtorso.jpg", class: "card-img img-fluid card-image-height") %>
           <div class="card-img-overlay background-image-cover">
-            <h3 class="card-title text-center">News from <%= @headlines[0].name %></h3>
-            <h5 class="card-text"><%= @headlines[0].title %></h5>
+            <!-- <h3 class="card-title text-center">News from <%#= @headlines[0].name %></h3> -->
+            <h5 class="card-text"><%= @headlines[0].title %> - @<%= @headlines[0].name.downcase %></h5>
             <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[0].description %></p>
-            <h5 class="card-text"><%= @headlines[1].title %></h5>
+            <h5 class="card-text"><%= @headlines[1].title %> - @<%= @headlines[1].name.downcase %></h5>
             <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[1].description %></p>
-            <h5 class="card-text"><%= @headlines[2].title %></h5>
+            <h5 class="card-text"><%= @headlines[2].title %> - @<%= @headlines[2].name.downcase %></h5>
             <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[2].description %></p>
+            <h5 class="card-text"><%= @headlines[3].title %> - @<%= @headlines[3].name.downcase %></h5>
+            <p class="card-text" style="border-bottom: 1px solid gray;"><%= @headlines[3].description %></p>
           </div>
         </div>
       </div>
@@ -38,7 +40,7 @@
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Weather -->
         <div class="card justify-content-center" style="height: 95%;">
-          <div id="openweathermap-widget-15" class="align-self-center"></div>
+          <div id="openweathermap-widget" class="align-self-center"></div>
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Logo -->
@@ -60,9 +62,9 @@
   });
 </script>
 <!-- For OpenWeatherMap widget -->
-<script type="text/javascript">
+<script>
   window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
-    window.myWidgetParam.push({id: 15,cityid: '2692969',appid: <%== ENV["open_weather_map_api_key"].to_json %>,units: 'metric',containerid: 'openweathermap-widget-15' });
+    window.myWidgetParam.push({id: 15,cityid: '2692969',appid: <%== ENV["open_weather_map_api_key"].to_json %>,units: 'metric',containerid: 'openweathermap-widget' });
 
       (function() {var script = document.createElement('script');
         script.async = true;
@@ -72,7 +74,7 @@
         s.parentNode.insertBefore(script, s);
       })();
 </script>
-<!-- Reload page every hour -->
+<!-- Reload entire page every hour -->
 <script type="text/javascript">
   setInterval(function(){
     if (navigator.onLine) {
