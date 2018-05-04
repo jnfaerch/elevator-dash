@@ -95,7 +95,7 @@
     currentBustime = document.getElementById('bustime').getAttribute('data-bustime');
     bustimeHours = currentBustime.slice(0, 1);
     bustimeMinutes = currentBustime.slice(3, 4);
-    if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours >= bustimeHours && tnow.getMinutes >= bustimeMinutes)) {
+    if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours > bustimeHours && tnow.getMinutes > bustimeMinutes)) {
       location.reload(true);
     }
   }, 1*60*1000);
