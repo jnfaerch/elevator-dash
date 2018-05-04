@@ -38,8 +38,7 @@
       <div class="col-12" style="height: 33vh;"> <!-- FlipClock -->
         <div class="card justify-content-center" style="height: 95%;">
           <div class="clock align-self-center"></div>
-            <!-- <h3 class="align-self-center text-center" style="padding-top: 10px;">Nästa buss mot Centralen</h3> -->
-            <h2 class="align-self-center text-center display-4" style="padding-top: 10px;"><span class="badge badge-warning">Buss <%= @busno %></span> <span class="badge badge-warning"><%= @bustime %></span> <span class="badge badge-warning"><%= @bustime2 %></span></h2>
+            <h2 class="align-self-center text-center display-4" style="padding-top: 10px;"><span id="busno" class="badge badge-warning">Buss <%= @busno %></span> <span id="bustime" class="badge badge-warning" data-bustime="<%= @bustime %>"><%= @bustime %></span> <span class="badge badge-warning"><%= @bustime2 %></span></h2>
             <p><%= @timenow %> | <%= @hournow %> | <%= @minnow %></p> <!-- For testing only -->
         </div>
       </div>
@@ -57,7 +56,7 @@
   </div> <!-- row end -->
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- For FlipClock -->
-<script type="text/javascript">
+<script>
   var clock;
   $(document).ready(function() {
     clock = $('.clock').FlipClock({
@@ -73,7 +72,7 @@
 <!-- For OpenWeatherMap widget -->
 <script>
   window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
-    window.myWidgetParam.push({id: 15,cityid: '2692969',appid: <%== ENV["open_weather_map_api_key"].to_json %>,units: 'metric',containerid: 'openweathermap-widget' });
+    window.myWidgetParam.push({id: 15,cityid: '2692969',appid: <%== ENV['open_weather_map_api_key'].to_json %>,units: 'metric',containerid: 'openweathermap-widget' });
 
       (function() {var script = document.createElement('script');
         script.async = true;
@@ -83,11 +82,30 @@
         s.parentNode.insertBefore(script, s);
       })();
 </script>
-<!-- Reload entire page every hour -->
-<script type="text/javascript">
+
+<!-- Insert bus info -->
+<script>
+  document.getElementById('busno');
+</script>
+
+<!-- Look for bus departure after now() -->
+<script>
   setInterval(function(){
-    if (navigator.onLine) {
-     location.reload(true);
+    var tnow = new Date();
+    currentBustime = document.getElementById('bustime').getAttribute('data-bustime');
+    bustimeHours = currentBustime.slice(0, 1);
+    bustimeMinutes = currentBustime.slice(3, 4);
+    if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours >= bustimeHours && tnow.getMinutes >= bustimeMinutes)) {
+      location.reload(true);
     }
-  }, 4.5*60*1000);
+  }, 1*60*1000);
+</script>
+
+<!-- Reload entire page every x hours or minutes -->
+<script>
+  // setInterval(function(){
+  //   if (navigator.onLine) {
+  //    location.reload(true);
+  //   }
+  // }, 4.5*60*1000);
 </script>
