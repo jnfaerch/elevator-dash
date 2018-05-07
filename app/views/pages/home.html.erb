@@ -39,7 +39,6 @@
         <div class="card justify-content-center" style="height: 95%;">
           <div class="clock align-self-center"></div>
             <h2 class="align-self-center text-center display-4" style="padding-top: 10px;"><span id="busno" class="badge badge-warning">Buss <%= @busno %></span> <span id="bustime" class="badge badge-warning" data-bustime="<%= @bustime %>"><%= @bustime %></span> <span class="badge badge-warning"><%= @bustime2 %></span></h2>
-            <p><%= @timenow %> | <%= @hournow %> | <%= @minnow %></p> <!-- For testing only -->
         </div>
       </div>
       <div class="col-12" style="height: 32vh;"> <!-- Weather -->
@@ -65,10 +64,6 @@
     });
   });
 </script>
-<!-- For resrobot -->
-<script>
-
-</script>
 <!-- For OpenWeatherMap widget -->
 <script>
   window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
@@ -82,20 +77,16 @@
         s.parentNode.insertBefore(script, s);
       })();
 </script>
-
-<!-- Insert bus info -->
-<script>
-  document.getElementById('busno');
-</script>
-
 <!-- Look for bus departure after now() -->
 <script>
   setInterval(function(){
     var tnow = new Date();
     currentBustime = document.getElementById('bustime').getAttribute('data-bustime');
-    bustimeHours = currentBustime.slice(0, 1);
-    bustimeMinutes = currentBustime.slice(3, 4);
-    if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours > bustimeHours && tnow.getMinutes > bustimeMinutes)) {
+    busHours = currentBustime.slice(0, 1);
+    bustimeHours = parseInt(busHours);
+    busMinutes = currentBustime.slice(3, 4);
+    bustimeMinutes = parseInt(busMinutes);
+    if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours >= bustimeHours && tnow.getMinutes >= bustimeMinutes)) {
       location.reload(true);
     }
   }, 1*60*1000);
@@ -103,9 +94,9 @@
 
 <!-- Reload entire page every x hours or minutes -->
 <script>
-  // setInterval(function(){
-  //   if (navigator.onLine) {
-  //    location.reload(true);
-  //   }
-  // }, 4.5*60*1000);
+  setInterval(function(){
+    if (navigator.onLine) {
+     location.reload(true);
+    }
+  }, 60*60*1000);
 </script>
