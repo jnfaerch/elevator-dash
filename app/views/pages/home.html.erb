@@ -8,7 +8,7 @@
     <div class="col-12 col-md-8"> <!-- Articles and news -->
       <div class="col-12" style="height: 54vh;"> <!-- Article -->
         <div class="card bg-dark text-white text-center card-image-control">
-          <%= image_tag("turningtorso.jpg", class: "card-img img-fluid card-image-height") %>
+          <img src="https://picsum.photos/1200/600/?random" class="card-img img-fluid card-image-height">
           <div class="card-img-overlay background-image-cover">
             <h2 class="card-title">Card title</h2>
             <p class="card-text lead paragraph-size">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -79,17 +79,17 @@
 </script>
 <!-- Look for bus departure after now() -->
 <script>
-  setInterval(function(){
-    var tnow = new Date();
-    currentBustime = document.getElementById('bustime').getAttribute('data-bustime');
-    busHours = currentBustime.slice(0, 1);
-    bustimeHours = parseInt(busHours);
-    busMinutes = currentBustime.slice(3, 4);
-    bustimeMinutes = parseInt(busMinutes);
-    if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours >= bustimeHours && tnow.getMinutes >= bustimeMinutes)) {
-      location.reload(true);
-    }
-  }, 1*60*1000);
+    setInterval(function(){
+      tnow = new Date();
+      currentBustime = document.getElementById('bustime').getAttribute('data-bustime');
+      busHours = currentBustime.substr(0, 2);
+      bustimeHours = parseInt(busHours);
+      busMinutes = currentBustime.substr(3, 4);
+      bustimeMinutes = parseInt(busMinutes);
+      if ((currentBustime == null || currentBustime == undefined) || (tnow.getHours() >= bustimeHours && tnow.getMinutes() >= bustimeMinutes)) {
+        location.reload(true);
+      }
+    }, 1*60*1000);
 </script>
 
 <!-- Reload entire page every x hours or minutes -->

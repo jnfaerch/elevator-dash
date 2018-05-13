@@ -1,0 +1,10 @@
+<div class="container">
+  <%= simple_form_for(@article, html: { class: 'form-group adds-top-padding' }) do |f| %>
+    <%= f.input :header, label: 'Headline', error: 'Header is mandatory, please specify one' %>
+    <%= f.input :body, label: 'Message', hint: 'Max ca 200 words' %>
+    <%= f.input :live, label: 'Show article online', as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.input :imgURL, input_html: {value: f.object.imgURL || 'https://picsum.photos/1200/600/?random'}, label: 'Link for your background image', hint: 'Leave pre-filled value for random image' %>
+    <%= f.input :user_id, input_html: {value: current_user.id} %>
+    <%= f.submit 'Save' %>
+  <% end %>
+</div>

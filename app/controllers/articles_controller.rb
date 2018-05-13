@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
+  require 'simple_form'
 
   def index
-
+    @articles = Article.all
   end
 
   def show
@@ -9,13 +10,29 @@ class ArticlesController < ApplicationController
   end
 
   def new
-
+    @article = Article.new
   end
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    redirect_to @article
+    if @article.save
+      @article.errors.full_messages
+      redirect_to articles_path(@articles)
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
   end
 
   private

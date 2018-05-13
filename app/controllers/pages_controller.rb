@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   require 'news-api'
   require 'open-uri'
-  require 'uri'
+  # require 'uri'
   require 'net/http'
 
   skip_before_action :authenticate_user!, only: [:home]
@@ -25,8 +25,7 @@ class PagesController < ApplicationController
 
   def online # Checks if resrobot api link is up!
     # uri = URI::HTTPS.build([nil, "api.resrobot.se", nil, "/v2/departureBoard", "key=#{ENV["resrobot_api_key"]}&id=740015647&direction=740000003&maxJourneys=4&products=128&format=json", nil])
-    uri = URI.parse("https://api.resrobot.se/v2/departureBoard?key=#{ENV['resrobot_api_key']}&id=740015647&direction=740000003&maxJourneys=4&products=128&format=json")
-    Net::HTTP.get_response(uri).code == "200"
+    Net::HTTP.get_response(URI.parse("https://api.resrobot.se/v2/departureBoard?key=#{ENV['resrobot_api_key']}&id=740015647&direction=740000003&maxJourneys=4&products=128&format=json")).code == "200"
   end
 
   def busjson
