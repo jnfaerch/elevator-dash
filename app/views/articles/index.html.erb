@@ -1,12 +1,12 @@
 <div class="container">
   <div class="adds-top-padding">
-    <% @articles.each do |article| %>
+    <% @articles.order(updated_at: :DESC).limit(20).each do |article| %>
       <h2>
         <% if article.live == true %>
           <%= icon('fa', 'eye', class: 'text-success') %>
         <% else %>
           <%= icon('fa', 'eye-slash', class: 'text-danger') %>
-        <% end %> - <%= article.header %>
+        <% end %> #<%= article.id %> - <%= article.header %>
       </h2>
       <p><%= article.body %></p>
       <p>Image: <%= article.imgURL %></p>

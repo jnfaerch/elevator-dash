@@ -19,6 +19,8 @@ class PagesController < ApplicationController
     @timenow = Time.now
     @hournow = Time.now.hour
     @minnow = Time.now.to_s.split[1][3..4]
+
+    @article = Article.all.order(updated_at: :ASC).last
   end
 
   private
