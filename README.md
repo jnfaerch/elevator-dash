@@ -1,3 +1,5 @@
+Project has moved to GitLab!
+
 Rails app for a dashboard with time, weather, logo, user article and news.
 <hr />
 FlipClock is open source http://flipclockjs.com/
